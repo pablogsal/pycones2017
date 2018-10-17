@@ -1,6 +1,7 @@
 #SHELL := /bin/bash
 
 NOTEBOOK_FILE=why-metaclasses.ipynb
+NBCONVERT_OPTS=--reveal-prefix=https://cdn.jsdelivr.net/reveal.js/3.0
 
 # Find out the module we need for the HTTP server, depending on the Python
 # version. [Source: https://stackoverflow.com/a/4933395]
@@ -14,7 +15,7 @@ MODULE.PYTHON.3 := http.server
 all : slides
 
 slides: ${NOTEBOOK_FILE}
-	jupyter nbconvert ${NOTEBOOK_FILE} --to slides 
+	jupyter nbconvert ${NOTEBOOK_FILE} --to slides ${NBCONVERT_OPTS}
 
 present: slides
 	# Binding to port 0 asks the kernel to allocate us a free port.
